@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///Users/nicorouvroy/Downloads/okwide-landing_3.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okwide — Révision Avant-Saison 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Okwide — Révision Avant-Saison 2025_files/css2" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --black: #080808;
+  --off-black: #0f0f0f;
+  --surface: #161616;
+  --red: #c8102e;
+  --red-dim: rgba(200,16,46,0.09);
+  --red-line: rgba(200,16,46,0.4);
+  --white: #f2ede8;
+  --grey: #888;
+  --grey-light: #555;
+  --border: rgba(255,255,255,0.07);
+}
+html { scroll-behavior:smooth; }
+body {
+  background:var(--black);
+  color:var(--white);
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CURSOR */
+.cursor { width:8px; height:8px; background:var(--red); border-radius:50%; position:fixed; z-index:9999; pointer-events:none; transform:translate(-50%,-50%); transition:transform .2s; }
+.cursor-ring { width:30px; height:30px; border:1px solid rgba(200,16,46,.4); border-radius:50%; position:fixed; z-index:9998; pointer-events:none; transform:translate(-50%,-50%); }
+
+/* NOISE */
+body::before { content:''; position:fixed; inset:0; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events:none; opacity:.45; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 4%; height:70px; border-bottom:1px solid var(--border); background:rgba(8,8,8,.94); backdrop-filter:blur(20px); }
+.logo { font-family:'Anton',sans-serif; font-size:1.4rem; letter-spacing:.25em; color:var(--white); }
+.logo em { color:var(--red); font-style:normal; }
+.nav-links { display:flex; align-items:center; gap:2.5rem; list-style:none; }
+.nav-links a { color:var(--grey); text-decoration:none; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; transition:color .2s; }
+.nav-links a:hover { color:var(--white); }
+.nav-cta { color:var(--black)!important; background:var(--red); padding:.55rem 1.4rem; font-weight:500!important; transition:opacity .2s, transform .2s; }
+.nav-cta:hover { opacity:.88; transform:translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  align-items:center;
+  padding:70px 4% 0;
+  position:relative; z-index:1;
+  gap:3rem;
+}
+.hero-left { padding-top:5rem; padding-bottom:5rem; animation:fadeLeft .9s ease both; }
+
+.eyebrow { display:flex; align-items:center; gap:1rem; margin-bottom:2.2rem; }
+.eyebrow-line { width:28px; height:1px; background:var(--red); flex-shrink:0; }
+.eyebrow span { font-size:.62rem; letter-spacing:.25em; text-transform:uppercase; color:var(--red); }
+
+h1 {
+  font-family:'Anton',sans-serif;
+  font-size:clamp(3.8rem,6.5vw,7rem);
+  line-height:1;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  margin-bottom:.6rem;
+}
+h1 .red { color:var(--red); display:block; }
+h1 .outline {
+  -webkit-text-stroke:1.5px var(--white);
+  color:transparent;
+  display:block;
+}
+.hero-subtitle {
+  font-size:clamp(.95rem,1.5vw,1.15rem);
+  font-weight:300;
+  color:var(--grey);
+  max-width:420px;
+  line-height:1.85;
+  margin-bottom:3rem;
+  letter-spacing:.02em;
+}
+.hero-subtitle strong { color:var(--white); font-weight:400; }
+
+.hero-btns { display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap; margin-bottom:4rem; }
+.btn-red { display:inline-block; background:var(--red); color:var(--white); text-decoration:none; font-size:.66rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; padding:1rem 2.2rem; transition:all .25s; position:relative; overflow:hidden; }
+.btn-red::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:rgba(255,255,255,.1); transition:left .3s; }
+.btn-red:hover::before { left:0; }
+.btn-red:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(200,16,46,.3); }
+.btn-outline { display:inline-block; color:var(--grey); text-decoration:none; font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; padding:.8rem 0; border-bottom:1px solid var(--grey-light); transition:all .2s; }
+.btn-outline:hover { color:var(--white); border-color:var(--white); }
+
+.hero-price-inline { display:flex; align-items:center; gap:1.5rem; border-top:1px solid var(--border); padding-top:2.2rem; }
+.hero-price-tag { font-family:'Anton',sans-serif; font-size:3.2rem; letter-spacing:.02em; color:var(--red); line-height:1; }
+.hero-price-info { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--grey); line-height:1.7; }
+.hero-price-info span { display:block; }
+
+/* HERO PHOTO */
+.hero-right { animation:fadeRight .9s ease both; height:100%; display:flex; align-items:center; }
+.hero-photo-wrap {
+  width:100%;
+  aspect-ratio:3/4;
+  max-height:78vh;
+  position:relative;
+  overflow:hidden;
+}
+.photo-placeholder {
+  width:100%; height:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1rem;
+  position:relative;
+  overflow:hidden;
+}
+.photo-placeholder::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(200,16,46,.06) 0%, transparent 60%),
+              repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,.015) 20px, rgba(255,255,255,.015) 21px);
+}
+.photo-placeholder-icon { font-size:2.5rem; opacity:.25; position:relative; z-index:1; }
+.photo-placeholder-label { font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--grey-light); position:relative; z-index:1; }
+.photo-placeholder-sub { font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.15); position:relative; z-index:1; }
+
+/* Red accent corner */
+.hero-photo-wrap::after {
+  content:'';
+  position:absolute; bottom:0; left:0;
+  width:60px; height:3px;
+  background:var(--red);
+}
+
+/* MARQUEE */
+.marquee-wrap { position:relative; z-index:1; border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; padding:1rem 0; background:var(--off-black); }
+.marquee-track { display:flex; animation:marquee 22s linear infinite; white-space:nowrap; }
+.marquee-item { display:flex; align-items:center; gap:2.5rem; padding:0 2.5rem; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--grey); flex-shrink:0; }
+.marquee-dot { width:4px; height:4px; background:var(--red); border-radius:50%; flex-shrink:0; }
+
+/* SECTION COMMONS */
+.section-eyebrow { display:flex; align-items:center; gap:1rem; margin-bottom:1.6rem; }
+.section-eyebrow-line { width:24px; height:1px; background:var(--red); }
+.section-eyebrow span { font-size:.6rem; letter-spacing:.25em; text-transform:uppercase; color:var(--red); }
+h2.display { font-family:'Anton',sans-serif; font-size:clamp(2.8rem,5vw,5.5rem); line-height:.95; letter-spacing:.02em; text-transform:uppercase; }
+h2.display em { font-style:normal; color:var(--red); }
+
+/* PRESTATIONS */
+.section-prestations { padding:9rem 4%; position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+.prestations-layout { display:grid; grid-template-columns:1fr 1.5fr; gap:8rem; align-items:start; }
+.prestations-sticky { position:sticky; top:110px; }
+.prestations-desc { font-size:.8rem; line-height:1.95; color:var(--grey); margin-top:1.8rem; max-width:320px; }
+.offer-pill { display:inline-flex; align-items:center; gap:1.2rem; border:1px solid var(--red-line); padding:.9rem 1.5rem; margin-top:2.5rem; }
+.offer-pill-price { font-family:'Anton',sans-serif; font-size:2.6rem; color:var(--red); line-height:1; letter-spacing:.02em; }
+.offer-pill-text { font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey); line-height:1.7; }
+.prestation-list { display:flex; flex-direction:column; }
+.prestation-item { display:grid; grid-template-columns:52px 1fr; gap:2rem; padding:2.6rem 0; border-bottom:1px solid var(--border); position:relative; transition:all .3s; }
+.prestation-item:first-child { border-top:1px solid var(--border); }
+.prestation-item::before { content:''; position:absolute; left:-4%; right:-4%; top:0; bottom:0; background:var(--red-dim); opacity:0; transition:opacity .3s; }
+.prestation-item:hover::before { opacity:1; }
+.prestation-num { font-family:'Anton',sans-serif; font-size:.85rem; color:var(--red); letter-spacing:.05em; padding-top:.2rem; position:relative; z-index:1; }
+.prestation-content { position:relative; z-index:1; }
+.prestation-content h3 { font-size:.8rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--white); margin-bottom:.6rem; }
+.prestation-content p { font-size:.78rem; line-height:1.85; color:var(--grey); }
+
+/* PHOTOS SECTION */
+.section-photos { padding:6rem 4%; position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+.photos-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:auto auto; gap:1.5px; background:var(--border); margin-top:4rem; }
+.photo-cell { position:relative; overflow:hidden; background:var(--surface); }
+.photo-cell.large { grid-row:span 2; }
+.photo-cell .photo-placeholder { min-height:260px; }
+.photo-cell.large .photo-placeholder { min-height:540px; }
+.photo-cell:hover .photo-placeholder { background:#1e1e1e; }
+
+/* OFFER BAND */
+.offer-band { position:relative; z-index:1; background:var(--red); padding:5rem 4%; overflow:hidden; }
+.offer-band::before { content:'99€'; position:absolute; right:1%; top:50%; transform:translateY(-50%); font-family:'Anton',sans-serif; font-size:18rem; color:rgba(0,0,0,.1); line-height:1; pointer-events:none; letter-spacing:-.02em; }
+.offer-band-inner { max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:3rem; flex-wrap:wrap; }
+.offer-band h2 { font-family:'Anton',sans-serif; font-size:clamp(2.5rem,5vw,5.5rem); line-height:.95; color:var(--white); letter-spacing:.02em; text-transform:uppercase; }
+.offer-band h2 span { display:block; opacity:.7; }
+.offer-band-details { display:flex; flex-direction:column; gap:.7rem; }
+.offer-band-detail { display:flex; align-items:center; gap:.8rem; font-size:.75rem; color:rgba(242,237,232,.82); letter-spacing:.04em; }
+.offer-check { color:rgba(242,237,232,.45); }
+.offer-band-cta { display:inline-block; background:var(--black); color:var(--white); text-decoration:none; font-size:.66rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; padding:1.1rem 2.5rem; transition:all .25s; flex-shrink:0; }
+.offer-band-cta:hover { background:var(--off-black); transform:translateY(-2px); }
+
+/* TESTIMONIALS */
+.section-testi { padding:9rem 4%; position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:5rem; }
+.testi-card { background:var(--black); padding:3rem 2.5rem; transition:background .3s; display:flex; flex-direction:column; justify-content:space-between; min-height:280px; }
+.testi-card:hover { background:var(--surface); }
+.testi-stars { display:flex; gap:3px; margin-bottom:1.6rem; }
+.star { width:9px; height:9px; background:var(--red); clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+.testi-quote { font-size:.88rem; font-weight:300; line-height:1.8; color:var(--white); flex-grow:1; margin-bottom:2rem; font-style:italic; }
+.testi-author { display:flex; align-items:center; gap:1rem; }
+.testi-initials { width:34px; height:34px; border:1px solid var(--red-line); display:flex; align-items:center; justify-content:center; font-size:.6rem; letter-spacing:.1em; color:var(--red); flex-shrink:0; font-weight:500; }
+.testi-info-name { font-size:.72rem; font-weight:500; letter-spacing:.06em; color:var(--white); }
+.testi-info-role { font-size:.65rem; letter-spacing:.08em; color:var(--grey); margin-top:.15rem; }
+
+/* FAQ */
+.section-faq { padding:9rem 4%; position:relative; z-index:1; background:var(--off-black); border-top:1px solid var(--border); }
+.section-faq-inner { max-width:900px; margin:0 auto; }
+.faq-list { margin-top:5rem; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-btn { width:100%; background:none; border:none; display:flex; justify-content:space-between; align-items:center; padding:2rem 0; cursor:none; gap:2rem; text-align:left; }
+.faq-q-text { font-size:.86rem; font-weight:400; letter-spacing:.02em; color:var(--grey); transition:color .2s; line-height:1.5; }
+.faq-item.open .faq-q-text, .faq-btn:hover .faq-q-text { color:var(--white); }
+.faq-toggle { width:28px; height:28px; flex-shrink:0; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--grey); font-size:1.1rem; font-weight:300; transition:all .3s; }
+.faq-item.open .faq-toggle { background:var(--red); border-color:var(--red); color:var(--white); transform:rotate(45deg); }
+.faq-answer { font-size:.8rem; line-height:1.95; color:var(--grey); max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+.faq-item.open .faq-answer { max-height:300px; padding-bottom:2rem; }
+
+/* CONTACT */
+.section-contact { padding:9rem 4%; position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+.contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:7rem; align-items:start; margin-top:5rem; }
+.contact-info-block { display:flex; flex-direction:column; }
+.contact-info-item { display:flex; align-items:flex-start; gap:1.5rem; padding:2rem 0; border-bottom:1px solid var(--border); }
+.contact-info-item:first-child { border-top:1px solid var(--border); }
+.contact-info-icon { color:var(--red); width:20px; flex-shrink:0; font-size:.85rem; margin-top:.1rem; }
+.contact-info-label { font-size:.57rem; letter-spacing:.22em; text-transform:uppercase; color:var(--grey); margin-bottom:.4rem; }
+.contact-info-value { font-size:.83rem; color:var(--white); line-height:1.6; }
+.contact-info-value a { color:var(--white); text-decoration:none; transition:color .2s; }
+.contact-info-value a:hover { color:var(--red); }
+.contact-cta-box { border:1px solid var(--border); padding:3.5rem; position:relative; overflow:hidden; }
+.contact-cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--red); }
+.contact-cta-box h3 { font-family:'Anton',sans-serif; font-size:2.2rem; letter-spacing:.03em; text-transform:uppercase; line-height:1; margin-bottom:1.2rem; }
+.contact-cta-box h3 em { font-style:normal; color:var(--red); }
+.contact-cta-box p { font-size:.78rem; line-height:1.95; color:var(--grey); margin-bottom:2.5rem; }
+.contact-cta-main { display:block; background:var(--red); color:var(--white); text-decoration:none; text-align:center; font-size:.66rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; padding:1.15rem; transition:all .25s; margin-bottom:1rem; }
+.contact-cta-main:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 10px 35px rgba(200,16,46,.25); }
+.contact-cta-sub { text-align:center; font-size:.6rem; letter-spacing:.16em; color:var(--grey); text-transform:uppercase; }
+
+/* FOOTER */
+footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:3rem 4%; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.footer-logo { font-family:'Anton',sans-serif; font-size:1.3rem; letter-spacing:.25em; }
+.footer-logo em { color:var(--red); font-style:normal; }
+footer p { font-size:.65rem; letter-spacing:.1em; color:var(--grey); }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.12s; }
+.reveal-delay-2 { transition-delay:.24s; }
+
+/* KEYFRAMES */
+@keyframes fadeLeft { from { opacity:0; transform:translateX(-28px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeRight { from { opacity:0; transform:translateX(28px); } to { opacity:1; transform:translateX(0); } }
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  body { cursor:auto; }
+  .cursor,.cursor-ring { display:none; }
+  nav .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; padding-top:90px; }
+  .hero-left { padding-top:3rem; padding-bottom:0; }
+  .hero-right { height:360px; }
+  .hero-photo-wrap { height:100%; max-height:360px; aspect-ratio:auto; }
+  .prestations-layout { grid-template-columns:1fr; gap:4rem; }
+  .prestations-sticky { position:static; }
+  .photos-grid { grid-template-columns:1fr 1fr; }
+  .photo-cell.large { grid-row:span 1; }
+  .photo-cell.large .photo-placeholder { min-height:260px; }
+  .testi-grid { grid-template-columns:1fr; }
+  .contact-layout { grid-template-columns:1fr; gap:4rem; }
+  .offer-band-inner { flex-direction:column; }
+  .offer-band::before { display:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor" style="left: 887px; top: 398px; transform: translate(-50%, -50%) scale(1);"></div>
+<div class="cursor-ring" id="ring" style="left: 886.341px; top: 403.496px; opacity: 1;"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">OK<em>W</em>IDE</div>
+  <ul class="nav-links">
+    <li><a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#prestations">Prestations</a></li>
+    <li><a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#temoignages">Avis</a></li>
+    <li><a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#faq">FAQ</a></li>
+    <li><a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#contact" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Offre Spéciale Avant-Saison</span>
+    </div>
+    <h1>
+      Votre efoil
+      <span class="red">est-il prêt</span>
+      <span class="outline">pour la saison ?</span>
+    </h1>
+    <p class="hero-subtitle">
+      Avant de retourner à l'eau, faites réviser votre matériel par nos techniciens spécialisés.<br>
+      <strong>Contrôle complet · Test sur banc · Tranquillité garantie.</strong>
+    </p>
+    <div class="hero-btns">
+      <a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#contact" class="btn-red">Réserver ma révision</a>
+      <a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#prestations" class="btn-outline">Voir les prestations</a>
+    </div>
+    <div class="hero-price-inline">
+      <div class="hero-price-tag">99€ <span style="font-size:1.2rem;text-decoration:line-through;opacity:.45;font-family:Montserrat,sans-serif;font-weight:300;">150€</span></div>
+      <div class="hero-price-info">
+        <span>TTC · Révision complète</span>
+        <span style="color:#c8102e;">Offre limitée jusqu'au 30 avril</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🏄</div>
+        <div class="photo-placeholder-label">Photo hero principale</div>
+        <div class="photo-placeholder-sub">Efoil en action · Format portrait</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Contrôle visserie</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Nettoyage connecteurs</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Graissage hélice</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Test moteur sur banc</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Efoil · Engins électriques</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>La Farlède · Var · PACA</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Contrôle visserie</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Nettoyage connecteurs</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Graissage hélice</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Test moteur sur banc</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Efoil · Engins électriques</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>La Farlède · Var · PACA</span><div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- ══ PRESTATIONS ══ -->
+<section id="prestations" class="section-prestations">
+  <div class="prestations-layout">
+    <div class="prestations-sticky reveal visible">
+      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Ce qui est inclus</span></div>
+      <h2 class="display">4 CONTRÔLES<br><em>ESSENTIELS</em></h2>
+      <p class="prestations-desc">Chaque révision est réalisée par nos techniciens spécialisés. Votre matériel repart en pleine forme, prêt pour la saison.</p>
+      <div class="offer-pill">
+        <div class="offer-pill-price">99€ <span style="font-size:1rem;text-decoration:line-through;opacity:.4;font-family:Montserrat,sans-serif;font-weight:300;">150€</span></div>
+        <div class="offer-pill-text">TTC · Jusqu'au 30 avril<br>Au lieu de 150€</div>
+      </div>
+    </div>
+    <div class="prestation-list reveal reveal-delay-1 visible">
+      <div class="prestation-item">
+        <div class="prestation-num">01</div>
+        <div class="prestation-content">
+          <h3>Contrôle de la visserie</h3>
+          <p>Inspection et serrage de l'ensemble de la visserie structurelle. Une étape fondamentale pour une navigation sûre et sans surprise.</p>
+        </div>
+      </div>
+      <div class="prestation-item">
+        <div class="prestation-num">02</div>
+        <div class="prestation-content">
+          <h3>Connecteurs électriques</h3>
+          <p>Contrôle, nettoyage en profondeur et protection des connecteurs pour une transmission optimale de la puissance.</p>
+        </div>
+      </div>
+      <div class="prestation-item">
+        <div class="prestation-num">03</div>
+        <div class="prestation-content">
+          <h3>Hélice &amp; graissage</h3>
+          <p>Contrôle de l'état de l'hélice, graissage des pièces mécaniques mobiles et vérification des jeux pour un rendement maximal.</p>
+        </div>
+      </div>
+      <div class="prestation-item">
+        <div class="prestation-num">04</div>
+        <div class="prestation-content">
+          <h3>Test moteur sur banc d'essai</h3>
+          <p>Test complet — puissance, vibrations, températures — sur banc d'essai dédié avant remise à l'eau. Zéro compromis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALERIE PHOTOS ══ -->
+<section class="section-photos">
+  <div class="reveal visible">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Notre atelier &amp; nos réalisations</span></div>
+    <h2 class="display">EN <em>ACTION</em></h2>
+  </div>
+  <div class="photos-grid reveal reveal-delay-1 visible">
+    <!-- Grande photo gauche -->
+    <div class="photo-cell large">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🔧</div>
+        <div class="photo-placeholder-label">Photo atelier</div>
+        <div class="photo-placeholder-sub">Technicien au travail · Format tall</div>
+      </div>
+    </div>
+    <!-- Photo haut droite -->
+    <div class="photo-cell">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">⚡</div>
+        <div class="photo-placeholder-label">Photo efoil</div>
+        <div class="photo-placeholder-sub">Engin ou détail technique</div>
+      </div>
+    </div>
+    <!-- Photo bas milieu -->
+    <div class="photo-cell">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🌊</div>
+        <div class="photo-placeholder-label">Photo en mer</div>
+        <div class="photo-placeholder-sub">Efoil sur l'eau · Var / PACA</div>
+      </div>
+    </div>
+    <!-- Photo bas droite -->
+    <div class="photo-cell">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🏄</div>
+        <div class="photo-placeholder-label">Photo client</div>
+        <div class="photo-placeholder-sub">Client ou session de glisse</div>
+      </div>
+    </div>
+    <!-- Photo bas extrême droite -->
+    <div class="photo-cell">
+      <div class="photo-placeholder">
+        <div class="photo-placeholder-icon">🔩</div>
+        <div class="photo-placeholder-label">Détail technique</div>
+        <div class="photo-placeholder-sub">Visserie · connecteurs · hélice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OFFER BAND ══ -->
+<div class="offer-band">
+  <div class="offer-band-inner">
+    <h2>OFFRE SPÉCIALE<br><span>AVANT-SAISON</span></h2>
+    <div class="offer-band-details">
+      <div class="offer-band-detail"><span class="offer-check">—</span> Offre valable jusqu'au 30 avril</div>
+      <div class="offer-band-detail"><span class="offer-check">—</span> Tous efoils &amp; engins nautiques électriques</div>
+      <div class="offer-band-detail"><span class="offer-check">—</span> Pièces facturées en supplément si nécessaire</div>
+      <div class="offer-band-detail"><span class="offer-check">—</span> Places limitées</div>
+    </div>
+    <a href="file:///Users/nicorouvroy/Downloads/okwide-landing_3.html#contact" class="offer-band-cta">Réserver à 99€ →</a>
+  </div>
+</div>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="temoignages" class="section-testi">
+  <div class="reveal visible">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Ils nous font confiance</span></div>
+    <h2 class="display">CE QU'ILS<br><em>EN DISENT</em></h2>
+  </div>
+  <div class="testi-grid reveal reveal-delay-1 visible">
+    <div class="testi-card">
+      <div>
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">« Révision faite avant la saison dernière — mon Fliteboard était comme neuf. Pas une seule panne en 40h de glisse. Je recommande les yeux fermés. »</p>
+      </div>
+      <div class="testi-author">
+        <div class="testi-initials">TM</div>
+        <div><div class="testi-info-name">Thomas M.</div><div class="testi-info-role">Pratiquant efoil · Marseille</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div>
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">« L'équipe connaît vraiment son sujet. Des connecteurs oxydés que je n'avais pas remarqués — ils ont tout détecté et nettoyé. Service irréprochable. »</p>
+      </div>
+      <div class="testi-author">
+        <div class="testi-initials">SC</div>
+        <div><div class="testi-info-name">Sophie C.</div><div class="testi-info-role">Propriétaire Waydoo · Nice</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div>
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">« Rapport qualité/prix imbattable. Le test sur banc m'a rassuré sur l'état du moteur. Je reprends la saison l'esprit entièrement tranquille. »</p>
+      </div>
+      <div class="testi-author">
+        <div class="testi-initials">AL</div>
+        <div><div class="testi-info-name">Antoine L.</div><div class="testi-info-role">Club nautique · Toulon</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq" class="section-faq">
+  <div class="section-faq-inner">
+    <div class="reveal visible">
+      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Questions fréquentes</span></div>
+      <h2 class="display">FAQ</h2>
+    </div>
+    <div class="faq-list reveal reveal-delay-1 visible">
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q-text">Quels engins sont éligibles à cette offre ?</span><span class="faq-toggle">+</span></button>
+        <div class="faq-answer">L'offre à 99€ est valable pour tous les efoils et engins nautiques électriques : Fliteboard, Waydoo, Lift Foils, Takuma, et autres marques. N'hésitez pas à nous contacter pour confirmer la compatibilité de votre matériel.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q-text">Combien de temps dure la révision ?</span><span class="faq-toggle">+</span></button>
+        <div class="faq-answer">En général, une révision complète prend entre 2 et 4 heures selon l'état du matériel. Nous vous donnons un délai précis à la prise en charge.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q-text">Comment déposer mon matériel ?</span><span class="faq-toggle">+</span></button>
+        <div class="faq-answer">Vous pouvez déposer votre engin directement dans notre atelier au 96 impasse du Serpolet, 83210 La Farlède. Une solution d'enlèvement est possible sur devis pour les clients éloignés.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q-text">Le prix de 99€ comprend-il les pièces ?</span><span class="faq-toggle">+</span></button>
+        <div class="faq-answer">Le forfait couvre la main d'œuvre et les consommables de base. Les pièces de remplacement, si nécessaires, sont facturées en supplément avec votre accord préalable.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q-text">L'offre est-elle cumulable avec d'autres services ?</span><span class="faq-toggle">+</span></button>
+        <div class="faq-answer">Oui. La révision peut être combinée avec nos autres prestations — réparations, accessoires, vente. Parlez-en à notre équipe pour un devis global.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section-contact">
+  <div class="reveal visible">
+    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Prendre rendez-vous</span></div>
+    <h2 class="display">RÉSERVEZ<br><em>VOTRE RÉVISION</em></h2>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-info-block reveal reveal-delay-1 visible">
+      <div class="contact-info-item">
+        <div class="contact-info-icon">◈</div>
+        <div><div class="contact-info-label">Atelier</div><div class="contact-info-value">96 impasse du Serpolet<br>83210 La Farlède</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">◈</div>
+        <div><div class="contact-info-label">Téléphone</div><div class="contact-info-value"><a href="tel:0646144042">06 46 14 40 42</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">◈</div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-value"><a href="file:///cdn-cgi/l/email-protection#f59a9e829c919087908590999096b59298949c99db969a98"><span class="__cf_email__" data-cfemail="1b74706c727f7e697e6b7e777e785b7c767a727735787476">[email&nbsp;protected]</span></a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">◈</div>
+        <div><div class="contact-info-label">Offre valable</div><div class="contact-info-value">Jusqu'au 30 avril · Places limitées</div></div>
+      </div>
+    </div>
+    <div class="contact-cta-box reveal reveal-delay-2 visible">
+      <h3>RÉSERVEZ <em>MAINTENANT</em></h3>
+      <p>Remplissez le formulaire en ligne. Notre équipe vous recontacte sous 24h pour confirmer votre rendez-vous et organiser le dépôt de votre matériel.</p>
+      <a href="https://taap.it/osM6hZ" target="_blank" class="contact-cta-main">Accéder au formulaire de réservation →</a>
+      <p class="contact-cta-sub">Révision complète · 99€ TTC au lieu de 150€ · Jusqu'au 30 avril</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">OK<em>W</em>IDE</div>
+  <p>Vente · Réparation · Maintenance · Engins nautiques électriques</p>
+  <p>© 2025 Okwide. Tous droits réservés.</p>
+</footer>
+
+<script data-cfasync="false" src="file:///cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Cursor
+  const cursor=document.getElementById('cursor'), ring=document.getElementById('ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.opacity='.3';});
+    el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='1';});
+  });
+
+  // FAQ
+  document.querySelectorAll('.faq-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement,open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!open)item.classList.add('open');
+    });
+  });
+
+  // Reveal
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body></html>
